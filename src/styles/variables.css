@@ -1,0 +1,25 @@
+body {
+  --colour-primary: #4b5159;
+  --colour-primary-dark: #292f3b;
+  --colour-secondary: #b51d1e;
+  --colour-secondary-dark: #872627;
+  
+  --colour-teal-blue: #2d728f;
+  --colour-blue-munsell: #3b8ea5;
+  --colour-green-yellow-crayola: #f5ee9e;
+  --colour-sandy-brown: #f49e4c;
+  --colour-firebrick: #ab3428;
+  
+  --gradient-top: linear-gradient(0deg, var(--colour-teal-blue), var(--colour-blue-munsell), var(--colour-green-yellow-crayola), var(--colour-sandy-brown), var(--colour-firebrick));
+  --gradient-right: linear-gradient(90deg, var(--colour-teal-blue), var(--colour-blue-munsell), var(--colour-green-yellow-crayola), var(--colour-sandy-brown), var(--colour-firebrick));
+  --gradient-bottom: linear-gradient(180deg, var(--colour-teal-blue), var(--colour-blue-munsell), var(--colour-green-yellow-crayola), var(--colour-sandy-brown), var(--colour-firebrick));
+  --gradient-left: linear-gradient(270deg, var(--colour-teal-blue), var(--colour-blue-munsell), var(--colour-green-yellow-crayola), var(--colour-sandy-brown), var(--colour-firebrick));
+  --gradient-top-right: linear-gradient(45deg, var(--colour-teal-blue), var(--colour-blue-munsell), var(--colour-green-yellow-crayola), var(--colour-sandy-brown), var(--colour-firebrick));
+  --gradient-bottom-right: linear-gradient(135deg, var(--colour-teal-blue), var(--colour-blue-munsell), var(--colour-green-yellow-crayola), var(--colour-sandy-brown), var(--colour-firebrick));
+  --gradient-top-left: linear-gradient(225deg, var(--colour-teal-blue), var(--colour-blue-munsell), var(--colour-green-yellow-crayola), var(--colour-sandy-brown), var(--colour-firebrick));
+  --gradient-bottom-left: linear-gradient(315deg, var(--colour-teal-blue), var(--colour-blue-munsell), var(--colour-green-yellow-crayola), var(--colour-sandy-brown), var(--colour-firebrick));
+  --gradient-radial: radial-gradient(var(--colour-teal-blue), var(--colour-blue-munsell), var(--colour-green-yellow-crayola), var(--colour-sandy-brown), var(--colour-firebrick));
+
+  --font-heading: 'henderson-slab-basic', serif;
+  --font-body: 'mokoko', serif;
+}

@@ -1,0 +1,16 @@
+body {
+  --grid-column-count: 6;
+  --grid-gutter-width: 25px;
+}
+
+.grid {
+  display: grid;
+  max-width: 948px;
+  margin: 0 auto;
+  grid-template-columns: repeat(var(--grid-column-count), 1fr);
+  grid-template-rows: 1fr 90px;
+  column-gap: var(--grid-gutter-width);
+  grid-template-areas:
+    'sidebar content content content content content'
+    'foooter footer  _       _        _      _      ';
+}
