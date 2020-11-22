@@ -42,7 +42,7 @@ module.exports = {
       },
     },
     `gatsby-plugin-mdx`,
-    `gatsby-plugin-graphql-codegen`,
+    // `gatsby-plugin-graphql-codegen`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {

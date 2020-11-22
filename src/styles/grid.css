@@ -14,15 +14,15 @@ body {
 .grid--base {
   grid-template-areas:
     'sidebar content content content content content'
-    'foooter footer  _       _        _      _      ';
-  grid-template-rows: 1fr 90px;
+    'footer footer  footer   _        _      _      ';
+  grid-template-rows: 1fr auto;
 }
 
 @media(max-width: 947px) and (min-width: 699px) {
   .grid--base {
     grid-template-areas:
       'sidebar content content content content content'
-      'foooter footer  _       _        _      _      ';
+      'footer  footer  footer  footer  _       _';
   }
 }
 
@@ -31,6 +31,9 @@ body {
     grid-template-columns:
       minmax(90px, 1fr)
       repeat(calc(var(--grid-column-count) - 1), 1fr);
+    grid-template-areas:
+    'sidebar content content content content content'
+    'footer  footer  footer  footer  footer  footer';
   }
 }
 
@@ -46,6 +49,6 @@ body {
     grid-template-areas:
       'sidebar'
       'content'
-      'foooter';
+      'footer';
   }
 }

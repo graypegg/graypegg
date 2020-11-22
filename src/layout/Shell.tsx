@@ -6,6 +6,7 @@ import styled from 'styled-components'
 import imgBackground from '../assets/images/background.svg'
 
 import { Sidebar } from './Sidebar'
+import { Footer } from './Footer'
 
 const Container = styled.div`
   background: url(${imgBackground}) no-repeat right -25vw top 10vh / 100vw;
@@ -28,6 +29,7 @@ export function Shell (props: React.PropsWithChildren<{}>) {
         <main>
           {props.children}
         </main>
+        <Footer />
       </Content>
     </Container>
   )
