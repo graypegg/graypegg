@@ -24,7 +24,7 @@ const Content = styled.div`
 export function Shell (props: React.PropsWithChildren<{}>) {
   return (
     <Container>
-      <Content className="grid">
+      <Content className="grid grid--base">
         <Sidebar />
         <main>
           {props.children}

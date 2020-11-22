@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `Gray Pegg`,
+    description: `I’m a Typescript developer based out of Toronto, and soon to be Montréal. I work for Landr as a developer; Typescript and Javascript consulting is my side-hustle, and doodling in Illustrator is a hobby.`,
+    author: `@graypegg`,
   },
   plugins: [
     {
