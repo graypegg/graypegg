@@ -1,5 +1,4 @@
 import * as React from 'react'
-import 'normalize.css'
 import '../styles/variables.css'
 import '../styles/grid.css'
 import styled from 'styled-components'
