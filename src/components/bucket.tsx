@@ -1,3 +1,4 @@
+import { Link } from 'gatsby'
 import * as React from 'react'
 import styled from 'styled-components'
 
@@ -8,7 +9,7 @@ interface BucketProps {
   icon?: string
 }
 
-const Container = styled.a`
+const Container = styled(Link)`
   --line-height: 1.15rem;
 
   display: block;
@@ -70,7 +71,7 @@ const Container = styled.a`
 
 export function Bucket (props: BucketProps) {
   return (
-    <Container icon={props.icon}>
+    <Container icon={props.icon} to={props.to}>
       <h3>{ props.title }:</h3>
       <p>{ props.description }</p>
     </Container>

@@ -1,5 +1,6 @@
 import * as React from 'react'
 import styled from 'styled-components'
+import { graphql } from 'gatsby'
 
 import imgIconEscape from '../assets/images/icon-escape.svg'
 import imgIconTwitter from '../assets/images/icon-twitter.svg'
@@ -10,6 +11,8 @@ import imgIconInfo from '../assets/images/icon-info.svg'
 import { Shell } from '../layout/Shell'
 import { SEO } from '../components/seo'
 import { Bucket } from '../components/bucket'
+
+import { LandingPageQuery } from '../../graphql-types'
 
 const LogoContainer = styled.div`
   h1 {
@@ -45,7 +48,12 @@ const BucketsContainer = styled.div`
   }
 `
 
-export default function IndexPage() {
+interface IndexPageProps {
+  data: LandingPageQuery
+}
+
+export default function IndexPage({ data }: IndexPageProps) {
+  const latestPost = data.allMarkdownRemark.edges[0]
   return (
     <Shell>
       <SEO title="Gray Pegg" />
@@ -55,11 +63,16 @@ export default function IndexPage() {
       </LogoContainer>
       
       <BucketsContainer className="grid">
-        <Bucket
-          title="Latest"
-          description="Fuck framework versioning with web components"
-          icon={imgIconEscape}
-          to="posts" />
+        { latestPost && latestPost.node.frontmatter
+          ? <Bucket
+              title="Latest"
+              description={
+                latestPost.node.frontmatter.title
+              }
+              icon={imgIconEscape}
+              to={latestPost.node.frontmatter.path} />
+            : null
+        }
         <Bucket
           title="Tweet"
           description="Loving this new graphic I can use. Always loved heraldry so having my own..."
@@ -84,3 +97,18 @@ export default function IndexPage() {
     </Shell>
   )
 }
+
+export const query = graphql`
+  query LandingPage {
+    allMarkdownRemark(sort: {fields: frontmatter___date}, limit: 1) {
+      edges {
+        node {
+          frontmatter {
+            title
+            path
+          }
+        }
+      }
+    }
+  }
+`
