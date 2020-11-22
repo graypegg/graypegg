@@ -17,6 +17,18 @@ const Container = styled.a`
   padding: 8px 7px;
   line-height: var(--line-height);
   mix-blend-mode: multiply;
+  cursor: pointer;
+  transition: transform 0.1s ease-out;
+  user-select: none;
+
+  &:hover {
+    transform: scale(0.96);
+  }
+
+  &:active {
+    transform: scale(0.94);
+  }
+
   ${ (props: Pick<BucketProps, 'icon'>) => `
     background-image: url(${ props.icon });
     background-blend-mode: multiply;
