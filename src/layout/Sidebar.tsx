@@ -31,10 +31,10 @@ export function Sidebar (props: React.PropsWithChildren<{}>) {
       </Link>
       <nav>
         <ul>
-          <li><Link to="posts">/posts</Link></li>
-          <li><Link to="me">/me</Link></li>
-          <li><Link to="projects">/projects</Link></li>
-          <li><Link to="posts">github</Link></li>
+          <li><Link to="/posts">/posts</Link></li>
+          <li><Link to="/me">/me</Link></li>
+          <li><Link to="/projects">/projects</Link></li>
+          <li><Link to="/posts">github</Link></li>
         </ul>
       </nav>
     </Container>

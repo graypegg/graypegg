@@ -34,7 +34,7 @@ export default function PostsPage({ data }: PostsPageProps) {
 
 export const query = graphql`
   query PostsPage {
-    allMarkdownRemark(sort: {fields: frontmatter___date}) {
+    allMarkdownRemark(sort: {fields: frontmatter___date, order: DESC}) {
       edges {
         node {
           frontmatter {

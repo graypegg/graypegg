@@ -34,6 +34,13 @@ module.exports = {
         path: `${__dirname}/src/content/posts`,
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `snips`,
+        path: `${__dirname}/src/content/snips`,
+      },
+    },
     `gatsby-transformer-remark`,
     // `gatsby-plugin-graphql-codegen`,
     `gatsby-transformer-sharp`,
