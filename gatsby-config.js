@@ -41,8 +41,8 @@ module.exports = {
         path: `${__dirname}/src/content/snips`,
       },
     },
-    `gatsby-transformer-remark`,
-    // `gatsby-plugin-graphql-codegen`,
+    `gatsby-plugin-mdx`,
+    `gatsby-plugin-graphql-codegen`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {

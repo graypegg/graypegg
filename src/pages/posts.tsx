@@ -13,7 +13,7 @@ interface PostsPageProps {
 }
 
 export default function PostsPage({ data }: PostsPageProps) {
-  const posts = data.allMarkdownRemark.edges.map(post => post.node)
+  const posts = data.allMdx.edges.map(post => post.node)
 
   return (
     <Shell>
@@ -23,8 +23,10 @@ export default function PostsPage({ data }: PostsPageProps) {
       
       {
         posts.map(post => (
-          <Post title={post.frontmatter.title} date={post.frontmatter.date} html={
-            `<p>${post.excerpt}</p>`
+          <Post title={post.frontmatter.title} date={post.frontmatter.date} body={
+            <p>
+              {post.excerpt}
+            </p>
           } />
         ))
       }
@@ -34,7 +36,7 @@ export default function PostsPage({ data }: PostsPageProps) {
 
 export const query = graphql`
   query PostsPage {
-    allMarkdownRemark(sort: {fields: frontmatter___date, order: DESC}) {
+    allMdx(sort: {fields: frontmatter___date, order: DESC}, filter: {fileAbsolutePath: {regex: "\\/posts/"}}) {
       edges {
         node {
           frontmatter {

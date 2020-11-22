@@ -1,6 +1,6 @@
 import * as React from 'react'
 import styled from 'styled-components'
-import { MarkdownRemarkFrontmatter, MarkdownRemark } from '../../graphql-types'
+import { MdxFrontmatter } from '../../graphql-types'
 
 const Container = styled.article`
   header {
@@ -62,11 +62,9 @@ const Container = styled.article`
   }
 `
 
-type PostProps =
-  Required<
-    Pick<MarkdownRemarkFrontmatter, 'title' | 'date'>
-    & Pick<MarkdownRemark, 'html'>
-  >
+interface PostProps extends Required<Pick<MdxFrontmatter, 'title' | 'date'>> {
+  body: React.ReactNode
+}
 
 export function Post (props: PostProps) {
   return (
@@ -75,7 +73,7 @@ export function Post (props: PostProps) {
         <h2>{props.title}</h2>
         <h3><time>{props.date}</time></h3>
       </header>
-      <div dangerouslySetInnerHTML={{ __html: props.html }}></div>
+      { props.body }
     </Container>
   )
 }

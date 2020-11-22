@@ -1,6 +1,7 @@
 import * as React from 'react'
 import styled from 'styled-components'
 import { graphql } from 'gatsby'
+import { MDXRenderer } from 'gatsby-plugin-mdx'
 
 import imgIconEscape from '../assets/images/icon-escape.svg'
 import imgIconTwitter from '../assets/images/icon-twitter.svg'
@@ -11,6 +12,7 @@ import imgIconInfo from '../assets/images/icon-info.svg'
 import { Shell } from '../layout/Shell'
 import { SEO } from '../components/seo'
 import { Bucket } from '../components/bucket'
+import { Post } from '../components/post'
 
 import { LandingPageQuery } from '../../graphql-types'
 
@@ -53,7 +55,8 @@ interface IndexPageProps {
 }
 
 export default function IndexPage({ data }: IndexPageProps) {
-  const latestPost = data.allMarkdownRemark.edges[0]
+  const latestPost = data.allMdx.edges[0]
+  const nowPost = data.mdx
   return (
     <Shell>
       <SEO title="Gray Pegg" />
@@ -94,13 +97,17 @@ export default function IndexPage({ data }: IndexPageProps) {
           icon={imgIconInfo}
           to="posts" />
       </BucketsContainer>
+      
+      <Post title='now!' date={nowPost?.frontmatter?.date} body={
+        <MDXRenderer>{nowPost?.body}</MDXRenderer>
+      } />
     </Shell>
   )
 }
 
 export const query = graphql`
   query LandingPage {
-    allMarkdownRemark(sort: {fields: frontmatter___date}, limit: 1) {
+    allMdx(sort: {fields: frontmatter___date, order: DESC}, filter: {fileAbsolutePath: {regex: "\\/posts/"}}, limit: 1) {
       edges {
         node {
           frontmatter {
@@ -108,6 +115,12 @@ export const query = graphql`
             path
           }
         }
+      }
+    }
+    mdx(fileAbsolutePath: {regex: "\\/snips/"}, frontmatter: {title: {eq: "now!"}}) {
+      body
+      frontmatter {
+        date
       }
     }
   }
