@@ -1,6 +1,6 @@
 import * as React from 'react'
 import styled from 'styled-components'
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 
 import { PostsPageQuery } from '../../graphql-types'
 
@@ -23,11 +23,13 @@ export default function PostsPage({ data }: PostsPageProps) {
       
       {
         posts.map(post => (
-          <Post title={post.frontmatter.title} date={post.frontmatter.date} body={
-            <p>
-              {post.excerpt}
-            </p>
-          } />
+          <Link to={post.frontmatter.path}>
+            <Post title={post.frontmatter.title} date={post.frontmatter.date} body={
+              <p>
+                {post.excerpt}
+              </p>
+            } />
+          </Link>
         ))
       }
     </Shell>
