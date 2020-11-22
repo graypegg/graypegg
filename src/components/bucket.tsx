@@ -45,14 +45,12 @@ const Container = styled(Link)`
 
   h3 {
     font-size: 0.8rem;
-    font-family: var(--font-body);
     margin: 0;
     font-weight: 500;
   }
   
   p {
     font-size: 0.8rem;
-    font-family: var(--font-body);
     font-weight: 200;
     margin-bottom: 0;
     overflow: hidden;

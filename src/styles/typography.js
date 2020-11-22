@@ -6,5 +6,5 @@ export default new Typography({
     "henderson-slab-basic",
     "serif",
   ],
-  bodyFontFamily: ["Georgia", "serif"],
+  bodyFontFamily: ["mokoko", "serif"],
 })

@@ -22,4 +22,6 @@ body {
 
   --font-heading: 'henderson-slab-basic', serif;
   --font-body: 'mokoko', serif;
+  
+  color: var(--colour-primary);
 }

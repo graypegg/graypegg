@@ -26,7 +26,9 @@ const Container = styled.div`
 export function Sidebar (props: React.PropsWithChildren<{}>) {
   return (
     <Container>
-      <img width="78" height="60" src={imgLogo} />
+      <Link to="/">
+        <img width="78" height="60" src={imgLogo} />
+      </Link>
       <nav>
         <ul>
           <li><Link to="posts">/posts</Link></li>
