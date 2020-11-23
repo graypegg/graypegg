@@ -12,26 +12,42 @@ interface PostsPageProps {
   data: PostsPageQuery
 }
 
+const UlContainer = styled.ul`
+  list-style-type: none;
+  margin: 0;
+  
+  li {
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+  }
+`
+
 export default function PostsPage({ data }: PostsPageProps) {
   const posts = data.allMdx.edges.map(post => post.node)
 
   return (
     <Shell>
       <SEO title="Blog Posts" />
-      
+
       <h1>Posts</h1>
-      
-      {
-        posts.map(post => (
-          <Link to={post.frontmatter.path}>
-            <Post title={post.frontmatter.title} date={post.frontmatter.date} body={
-              <p>
-                {post.excerpt}
-              </p>
-            } />
-          </Link>
-        ))
-      }
+
+      <UlContainer>
+        {
+          posts.map(post => (
+            <li>
+              <Link to={post.frontmatter.path}>
+                <Post title={post.frontmatter.title} date={post.frontmatter.date} body={
+                  <p>
+                    {post.excerpt}
+                  </p>
+                } />
+              </Link>
+            </li>
+          ))
+        }
+      </UlContainer>
     </Shell>
   )
 }

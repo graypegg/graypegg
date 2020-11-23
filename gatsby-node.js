@@ -10,7 +10,17 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
   const result = await graphql(`
     query {
-      allMdx(filter: {fileAbsolutePath: {regex: "\\/posts/"}}) {
+      posts: allMdx(filter: {fileAbsolutePath: {regex: "\\/posts/"}}) {
+        edges {
+          node {
+            id
+            frontmatter {
+              path
+            }
+          }
+        }
+      }
+      pages: allMdx(filter: {fileAbsolutePath: {regex: "\\/pages/"}}) {
         edges {
           node {
             id
@@ -26,7 +36,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     reporter.panicOnBuild('🚨  ERROR: Loading "createPages" query')
   }
   // Create blog post pages.
-  const posts = result.data.allMdx.edges
+  const posts = result.data.posts.edges
   // you'll call `createPage` for each result
   posts.forEach(({ node }, index) => {
     createPage({
@@ -35,6 +45,22 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       path: node.frontmatter.path,
       // This component will wrap our MDX content
       component: path.resolve(`./src/templates/post.tsx`),
+      // You can use the values in this context in
+      // our page layout component
+      context: { id: node.id },
+    })
+  })
+  
+  // Create blog post pages.
+  const pages = result.data.pages.edges
+  // you'll call `createPage` for each result
+  pages.forEach(({ node }, index) => {
+    createPage({
+      // This is the slug you created before
+      // (or `node.frontmatter.slug`)
+      path: node.frontmatter.path,
+      // This component will wrap our MDX content
+      component: path.resolve(`./src/templates/page.tsx`),
       // You can use the values in this context in
       // our page layout component
       context: { id: node.id },

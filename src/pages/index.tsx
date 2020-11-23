@@ -80,22 +80,22 @@ export default function IndexPage({ data }: IndexPageProps) {
           title="Tweet"
           description="Loving this new graphic I can use. Always loved heraldry so having my own..."
           icon={imgIconTwitter}
-          to="posts" />
+          to="http://twitter.com/graypegg" />
         <Bucket
           title="Myself"
           description="Web developer based in Toronto available for side TS/JS consulting work."
           icon={imgIconWave}
-          to="posts" />
+          to="/me" />
         <Bucket
           title="Big Projects"
           description="This site. Moving."
           icon={imgIconRails}
-          to="posts" />
+          to="/projects" />
         <Bucket
           title="Email Me"
           description="Ask me anything!"
           icon={imgIconInfo}
-          to="posts" />
+          to="mailto://graham@toi.sh" />
       </BucketsContainer>
       
       <Post title='now!' date={nowPost?.frontmatter?.date} body={
