@@ -3,12 +3,6 @@ import styled from 'styled-components'
 import { graphql } from 'gatsby'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 
-import imgIconEscape from '../assets/images/icon-escape.svg'
-import imgIconTwitter from '../assets/images/icon-twitter.svg'
-import imgIconWave from '../assets/images/icon-wave.svg'
-import imgIconRails from '../assets/images/icon-rails.svg'
-import imgIconInfo from '../assets/images/icon-info.svg'
-
 import { Shell } from '../layout/Shell'
 import { SEO } from '../components/seo'
 import { Bucket } from '../components/bucket'
@@ -16,6 +10,7 @@ import { Post } from '../components/post'
 import { Emphasis } from '../components/fun/emphasis'
 
 import { LandingPageQuery } from '../../graphql-types'
+import { isValidIcon } from '../components/icon'
 
 const LogoContainer = styled.div`
   h1 {
@@ -78,35 +73,35 @@ export default function IndexPage({ data }: IndexPageProps) {
       </LogoContainer>
       
       <BucketsContainer className="grid">
-        { latestPost && latestPost.node.frontmatter
+        { latestPost && latestPost.node.frontmatter && isValidIcon(latestPost.node.frontmatter.icon)
           ? <Bucket
               title="Latest"
               description={
                 latestPost.node.frontmatter.title
               }
-              icon={imgIconEscape}
+              icon={latestPost.node.frontmatter.icon}
               to={latestPost.node.frontmatter.path} />
             : null
         }
         <Bucket
           title="Twitter"
           description="I've been known to use it."
-          icon={imgIconTwitter}
+          icon='twitter'
           to="http://twitter.com/graypegg" />
         <Bucket
           title="Myself"
           description="Web developer based in Toronto available for side TS/JS consulting work."
-          icon={imgIconWave}
+          icon='hi'
           to="/me" />
         <Bucket
           title="Big Projects"
           description="This site. Moving."
-          icon={imgIconRails}
+          icon='rails'
           to="/projects" />
         <Bucket
           title="Email Me"
           description="Ask me anything!"
-          icon={imgIconInfo}
+          icon='info'
           to="mailto://graham@toi.sh" />
       </BucketsContainer>
       
@@ -124,7 +119,8 @@ export const query = graphql`
         node {
           frontmatter {
             title
-            path
+            path,
+            icon
           }
         }
       }

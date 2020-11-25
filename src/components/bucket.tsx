@@ -1,12 +1,13 @@
 import { Link } from 'gatsby'
 import * as React from 'react'
 import styled from 'styled-components'
+import { Icon, IconRef } from './icon'
 
 interface BucketProps {
   title: string
   description: string
   to: string
-  icon?: string
+  icon?: IconRef
 }
 
 const Container = styled(Link)`
@@ -21,6 +22,8 @@ const Container = styled(Link)`
   cursor: pointer;
   transition: transform 0.1s ease-out;
   user-select: none;
+  position: relative;
+  overflow: hidden;
 
   &:hover {
     transform: scale(0.96);
@@ -31,18 +34,22 @@ const Container = styled(Link)`
     transform: scale(0.94);
   }
 
-  ${ (props: Pick<BucketProps, 'icon'>) => `
-    background-image: url(${ props.icon });
-    background-blend-mode: multiply;
-    background-repeat: no-repeat;
-    background-position: right 10px bottom 10px;
-    background-size: 60px;
+  &>img {
+    width: 60px;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    mix-blend-mode: multiply;
+    z-index: -1;
+    filter: grayscale(1) brightness(1.2);
+    margin-bottom: 0;
     
     @media (max-width: 500px) {
-      background-position: right 10px top -20px;
-      background-size: 40%;
+      transform: translateY(50%);
+      right: -10px;
+      width: 60%;
     }
-  ` }
+  }
 
   h3 {
     font-size: 0.8rem;
@@ -70,9 +77,10 @@ const Container = styled(Link)`
 
 export function Bucket (props: BucketProps) {
   return (
-    <Container icon={props.icon} to={props.to}>
+    <Container to={props.to}>
       <h3>{ props.title }:</h3>
       <p>{ props.description }</p>
+      <Icon icon={props.icon} />
     </Container>
   )
 }
