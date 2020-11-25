@@ -25,3 +25,11 @@ body {
   
   color: var(--colour-primary);
 }
+
+a {
+  color: var(--colour-teal-blue);
+}
+
+a:hover {
+  color: var(--colour-blue-munsell);
+}

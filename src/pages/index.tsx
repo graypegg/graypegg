@@ -48,7 +48,11 @@ const BucketsContainer = styled.div`
     --grid-column-count: 3;
     grid-template-rows: repeat(2, auto);
     
-    *:nth-child(1) { grid-column: span 2; }
+    &>*:nth-child(1) { grid-column: span 2; }
+    
+    &>* {
+      min-height: calc(var(--grid-gutter-width) * 4);
+    }
   }
 
   @media(max-width: 500px) {
@@ -85,8 +89,8 @@ export default function IndexPage({ data }: IndexPageProps) {
             : null
         }
         <Bucket
-          title="Tweet"
-          description="Loving this new graphic I can use. Always loved heraldry so having my own..."
+          title="Twitter"
+          description="I've been known to use it."
           icon={imgIconTwitter}
           to="http://twitter.com/graypegg" />
         <Bucket
@@ -115,7 +119,7 @@ export default function IndexPage({ data }: IndexPageProps) {
 
 export const query = graphql`
   query LandingPage {
-    allMdx(sort: {fields: frontmatter___date, order: DESC}, filter: {fileAbsolutePath: {regex: "\\/posts/"}}, limit: 1) {
+    allMdx(sort: {fields: frontmatter___date, order: DESC}, filter: {fileAbsolutePath: {regex: "\\/posts/"}, frontmatter: {draft: {eq: false}}}, limit: 1) {
       edges {
         node {
           frontmatter {

@@ -54,7 +54,7 @@ export default function PostsPage({ data }: PostsPageProps) {
 
 export const query = graphql`
   query PostsPage {
-    allMdx(sort: {fields: frontmatter___date, order: DESC}, filter: {fileAbsolutePath: {regex: "\\/posts/"}}) {
+    allMdx(sort: {fields: frontmatter___date, order: DESC}, filter: {fileAbsolutePath: {regex: "\\/posts/"}, frontmatter: {draft: {eq: false}}}) {
       edges {
         node {
           frontmatter {

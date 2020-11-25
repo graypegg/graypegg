@@ -5,8 +5,9 @@ import { graphql, Link } from "gatsby"
 
 import { Shell } from '../layout/Shell'
 import { Post } from '../components/post'
+import { Emphasis } from '../components/fun/emphasis'
 
-const shortcodes = { Link }
+const shortcodes = { Link, Emphasis }
 
 export default function PageTemplate(props) {
   return (
