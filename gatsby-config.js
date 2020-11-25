@@ -3,8 +3,10 @@ module.exports = {
     title: `Gray Pegg`,
     description: `I’m a Typescript developer based out of Toronto, and soon to be Montréal. I work for Landr as a developer; Typescript and Javascript consulting is my side-hustle, and doodling in Illustrator is a hobby.`,
     author: `@graypegg`,
+    siteUrl: `https://graypegg.com`,
   },
   plugins: [
+    `gatsby-plugin-sitemap`,
     {
       resolve: "gatsby-plugin-web-font-loader",
       options: {
@@ -20,6 +22,18 @@ module.exports = {
       },
     },
     `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-styled-components`,
+    {
+      resolve: `gatsby-plugin-google-gtag`,
+      options: {
+        trackingIds: [
+          "UA-183989852-1",
+        ],
+        pluginConfig: {
+          respectDNT: true
+        }
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -74,13 +88,13 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `Gray Pegg`,
+        short_name: `Gray Pegg`,
         start_url: `/`,
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/assets/images/background.svg`, // This path is relative to the root of the site.
+        icon: `src/assets/images/favicon.png`, // This path is relative to the root of the site.
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
