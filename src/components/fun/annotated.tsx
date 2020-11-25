@@ -33,7 +33,7 @@ interface AnnotatedProps {
 }
 
 export function Annotated (props: React.PropsWithChildren<AnnotatedProps>) {
-  return <Container {...props}>
+  return <Container className="icon" {...props}>
     <Icon icon={props.icon} />
     {props.children}
   </Container>;

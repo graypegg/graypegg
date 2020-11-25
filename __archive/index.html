@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>Gray Pegg</title>
+		<style>
+			body {
+				--primary: #4b5159;
+				--primary-dark: #292f3b;
+				--secondary: #b51d1e;
+				padding: 0 10vw 10vw;
+				margin: 0;
+				font-family: Helvetica, sans-serif;
+				color: var(--primary);
+				background: url(./arms.svg) no-repeat right 10vw;
+			}
+			.bookmark {
+				margin: 0 20px 0 0;
+				background-color: currentColor;
+				padding: calc(10vw + 10px) 30px 80px;
+				display: inline-block;
+				position: relative;
+				flex: 0 0 auto;
+			}
+			@media screen and (max-width: 1024px) {
+				.bookmark {
+					padding-bottom: 30px;
+				}
+			}
+			header {
+				display: flex;
+				flex-wrap: wrap;
+				margin-bottom: 50px;
+			}
+			p > img {
+				width: 13px;
+				opacity: 0.3;
+				transform: translate(0, 2px);
+			}
+			.bookmark > img {
+				width: calc(10vw + 3rem);
+				filter: drop-shadow(0 0 10px var(--primary-dark))
+			}
+			h1 {
+				font-size: calc(10vw + 3em);
+				margin: 40px 0;
+				line-height: calc(8vw + 0.4em);
+				flex: 1 1 600px;
+				align-self: flex-end;
+			}
+			h2 {
+				border-bottom: 3px solid currentColor;
+				padding-bottom: 4px;
+				margin: 30px 0 10px;
+				font-size: 1.6rem;
+			}
+			p {
+				font-size: 1.2rem;
+				margin: 14px 0;
+				line-height: 1.9rem;
+			}
+			a {
+				color: inherit;
+			}
+			del {
+				filter: brightness(2);
+			}
+		</style>
+	</head>
+	<body>
+		<header>
+			<div class="bookmark"><img src="./logo-soft.svg" alt="an adorable minimalist image of a red panda" /></div>
+			<h1>Gray Pegg</h1>
+		</header>
+		<h2>Contact</h2>
+		<p>
+			<a href="mailto:graham@toi.sh">graham@toi.sh</a> / <a href="tel:6474904729">647 490 GRAY</a><br/>
+			<span lang="en">Toronto for now. <del datetime="2020-01-29T18:25:17Z">Maybe</del>&nbsp;Montréal soon.</span><br/>
+			<span lang="fr">Toronto à ce moment. Montréal bientôt, <del datetime="2020-01-29T18:25:17Z">peut-être.</del></span>
+		</p>
+		<h2 lang="en">I'm working on it</h2>
+		<p lang="en">
+			Thanks for stopping by. Currently, I'm working on putting together a blog for some ramblings. Until then, this site will just be a contact card for myself. <img src="./writers-spek-08.svg" alt="a tiny red panda in a square to mark the end of this paragraph" />
+		</p>
+		<h2 lang="fr">Travaille en progès</h2>
+		<p lang="fr">
+			Salut. Je construis actuellement un blog pour tous les déchets que je voudrais à ecrire. Jusque là, ce site est un carte-contact pour moi seulement. Si vous pouvez, j'apprécie toujours un conversation en français! <img lang="fr" src="./writers-spek-08.svg" alt="un petit panda roux dans un carré pour marquer le fin de ce paragraph" />
+		</p>
+		<p lang="fr"><ins datetime="2020-01-29T18:25:17Z">
+			J'ai une date de démenager! Mon dernière jour à Toronto soit <del datetime="2020-04-06T18:46:08Z"><time datetime="2020-05-01T04:00:00.000Z">le 1<sup>er</sup> Mai.</time></del><ins datetime="2020-04-06T18:46:08Z">&nbsp;quand la pandémie est fini.</ins>
+		</ins></p>
+	</body>
+</html>
