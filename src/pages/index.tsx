@@ -65,7 +65,7 @@ export default function IndexPage({ data }: IndexPageProps) {
   const nowPost = data.mdx
   return (
     <Shell>
-      <SEO title="Gray Pegg" />
+      <SEO title="Home" />
       <LogoContainer>
         <h1>Gray Pegg</h1>
         <h2>web developer & consultant<Emphasis>hire me!</Emphasis></h2>
@@ -101,7 +101,7 @@ export default function IndexPage({ data }: IndexPageProps) {
           title="Email Me"
           description="Ask me anything!"
           icon='info'
-          to="mailto://graham@toi.sh" />
+          to="/me" />
       </BucketsContainer>
       
       <Post title='now!' date={nowPost?.frontmatter?.date} body={

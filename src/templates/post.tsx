@@ -6,6 +6,7 @@ import { graphql, Link } from "gatsby"
 import { BlogPostQuery } from '../../graphql-types'
 
 import { Shell } from '../layout/Shell'
+import { SEO } from '../components/seo'
 import { Post } from '../components/post'
 import { Emphasis } from '../components/fun/emphasis'
 import { Annotated } from '../components/fun/annotated'
@@ -20,6 +21,7 @@ export default function PageTemplate(props: PageTemplateProps) {
   const iconSafe = props.data.mdx.frontmatter.icon ?? 'coffee'
   return (
     <Shell>
+      <SEO title={props.data.mdx.frontmatter.title} />
       <Post
         title={props.data.mdx.frontmatter.title}
         date={props.data.mdx.frontmatter.date}

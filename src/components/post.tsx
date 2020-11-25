@@ -79,12 +79,15 @@ interface PostProps extends Required<Pick<MdxFrontmatter, 'title' | 'date'>> {
 }
 
 export function Post (props: PostProps) {
+  const dateTime = React.useMemo(() => {
+    return new Date(props.date).toISOString()
+  }, [props.date])
   return (
     <Container>
       { props.icon ? <Icon icon={props.icon} /> : null }
       <header>
         <h2>{props.title}</h2>
-        <h3><time>{props.date}</time></h3>
+        <h3><time dateTime={dateTime}>{props.date}</time></h3>
       </header>
       { props.body }
     </Container>

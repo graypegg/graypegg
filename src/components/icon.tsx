@@ -41,7 +41,7 @@ export function Icon (props: React.PropsWithChildren<AnnotatedProps>) {
         `
       }
       render={(data: IconFilesQuery) => (
-        <Container>
+        <Container role="presentation">
           <use href={getIcon(props.icon, data) + '#Layer_1'} />
         </Container>
       )}/>

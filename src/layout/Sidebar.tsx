@@ -1,6 +1,7 @@
 import * as React from 'react'
 import styled from 'styled-components'
 import { Link } from 'gatsby'
+import { OutboundLink } from 'gatsby-plugin-google-gtag'
 
 import imgLogo from '../assets/images/logo.svg'
 
@@ -64,7 +65,7 @@ export function Sidebar (props: React.PropsWithChildren<{}>) {
           <li><Link to="/posts">/posts</Link></li>
           <li><Link to="/me">/me</Link></li>
           <li><Link to="/projects">/projects</Link></li>
-          <li><Link to="https://github.com/graypegg">github</Link></li>
+          <li><OutboundLink href="https://github.com/graypegg">github</OutboundLink></li>
         </ul>
       </nav>
     </Container>

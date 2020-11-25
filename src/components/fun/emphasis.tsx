@@ -10,7 +10,8 @@ const Container = styled.em`
   margin-left: 0.2em;
   margin-right: 0.2em;
   
-  &>div {
+  &>span[role='presentation'] {
+    display: block;
     position: absolute;
     top: 50%;
     height: 0.1em;
@@ -29,12 +30,12 @@ const Container = styled.em`
 
 export function Emphasis (props: React.PropsWithChildren<{}>) {
   return <Container>
-    <div role="presentation" />
-    <div role="presentation" />
-    <div role="presentation" />
+    <span role="presentation" />
+    <span role="presentation" />
+    <span role="presentation" />
     <span>{props.children}</span>
-    <div role="presentation" />
-    <div role="presentation" />
-    <div role="presentation" />
+    <span role="presentation" />
+    <span role="presentation" />
+    <span role="presentation" />
   </Container>;
 }
