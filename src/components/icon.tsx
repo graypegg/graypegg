@@ -1,49 +1,49 @@
 import * as React from 'react'
 import styled from 'styled-components'
-
-import OFCheckIcon from '../assets/images/icons/icon-omnifocus.svg'
-import HiIcon from '../assets/images/icons/icon-hi.svg'
-import CoffeeIcon from '../assets/images/icons/icon-coffee.svg'
-import BikeIcon from '../assets/images/icons/icon-bike.svg'
-import TrainIcon from '../assets/images/icons/icon-train.svg'
-
-import EscapeIcon from '../assets/images/icons/icon-escape.svg'
-import InfoIcon from '../assets/images/icons/icon-info.svg'
-import RailsIcon from '../assets/images/icons/icon-rails.svg'
-import TwitterIcon from '../assets/images/icons/icon-twitter.svg'
-
-const icons = {
-  omnifocus: OFCheckIcon,
-  hi: HiIcon,
-  coffee: CoffeeIcon,
-  bike: BikeIcon,
-  train: TrainIcon,
-  escape: EscapeIcon,
-  info: InfoIcon,
-  rails: RailsIcon,
-  twitter: TwitterIcon
-}
-
-export type IconRef = keyof typeof icons;
+import { StaticQuery, graphql } from 'gatsby'
+import { IconFilesQuery } from '../../graphql-types'
 
 interface AnnotatedProps {
-  icon: IconRef;
-  normalize?: boolean;
+  icon: string;
 }
 
-export function isValidIcon (string: string): string is IconRef {
-  return string in icons;
-}
-
-const Container = styled.img`
-  ${ (props: AnnotatedProps) => (
-    props.normalize
-      ? `filter: grayscale(1) brightness(0);`
-      : null
-    )
+const Container = styled.svg`
+  width: 40px;
+  height: 40px;
+  
+  use {
+    color: var(--colour-primary);
   }
 `
 
+function getIcon (iconName: string, fileResponse: IconFilesQuery): string {
+  const fileNode = fileResponse.allFile.edges.find(edge => edge.node.name === `icon-${iconName}`)
+  
+  if (fileNode) return fileNode.node.publicURL
+}
+
 export function Icon (props: React.PropsWithChildren<AnnotatedProps>) {
-  return <Container role="presentation" alt={props.icon} src={icons[props.icon]} {...props} />
+  return (
+    <StaticQuery
+      query={
+        graphql`
+          query IconFiles {
+            allFile(filter: {relativeDirectory: {eq: "icons"}}) {
+              edges {
+                node {
+                  id
+                  name
+                  publicURL
+                }
+              }
+            }
+          }
+        `
+      }
+      render={(data: IconFilesQuery) => (
+        <Container>
+          <use href={getIcon(props.icon, data) + '#Layer_1'} />
+        </Container>
+      )}/>
+  )
 }

@@ -1,12 +1,17 @@
 import * as React from 'react'
 import styled from 'styled-components'
 import { MdxFrontmatter } from '../../graphql-types'
-import { Icon, IconRef } from '../components/icon'
+import { Icon } from '../components/icon'
 
 const Container = styled.article`
-  &>img {
-    width: 10%;
+  &>svg {
+    width: 45px;
+    height: 45px;
     margin-bottom: 0;
+    
+    use {
+      fill: var(--colour-primary);
+    }
   }
 
   header {
@@ -70,7 +75,7 @@ const Container = styled.article`
 
 interface PostProps extends Required<Pick<MdxFrontmatter, 'title' | 'date'>> {
   body: React.ReactNode
-  icon?: IconRef
+  icon?: string
 }
 
 export function Post (props: PostProps) {

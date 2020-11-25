@@ -10,7 +10,6 @@ import { Post } from '../components/post'
 import { Emphasis } from '../components/fun/emphasis'
 
 import { LandingPageQuery } from '../../graphql-types'
-import { isValidIcon } from '../components/icon'
 
 const LogoContainer = styled.div`
   h1 {
@@ -73,7 +72,7 @@ export default function IndexPage({ data }: IndexPageProps) {
       </LogoContainer>
       
       <BucketsContainer className="grid">
-        { latestPost && latestPost.node.frontmatter && isValidIcon(latestPost.node.frontmatter.icon)
+        { latestPost && latestPost.node.frontmatter
           ? <Bucket
               title="Latest"
               description={

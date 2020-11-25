@@ -1,13 +1,13 @@
 import { Link } from 'gatsby'
 import * as React from 'react'
 import styled from 'styled-components'
-import { Icon, IconRef } from './icon'
+import { Icon } from './icon'
 
 interface BucketProps {
   title: string
   description: string
   to: string
-  icon?: IconRef
+  icon?: string
 }
 
 const Container = styled(Link)`
@@ -34,8 +34,9 @@ const Container = styled(Link)`
     transform: scale(0.94);
   }
 
-  &>img {
+  &>svg {
     width: 60px;
+    height: 60px;
     position: absolute;
     bottom: 10px;
     right: 10px;
@@ -45,9 +46,10 @@ const Container = styled(Link)`
     opacity: 0.4;
     
     @media (max-width: 500px) {
-      transform: translateY(50%);
+      transform: translateY(40%);
       right: -10px;
-      width: 60%;
+      width: 30vw;
+      height: 30vw;
     }
   }
 
@@ -80,7 +82,7 @@ export function Bucket (props: BucketProps) {
     <Container to={props.to}>
       <h3>{ props.title }:</h3>
       <p>{ props.description }</p>
-      <Icon icon={props.icon} normalize={true} />
+      <Icon icon={props.icon} />
     </Container>
   )
 }

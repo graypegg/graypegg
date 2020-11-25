@@ -9,7 +9,6 @@ import { Shell } from '../layout/Shell'
 import { Post } from '../components/post'
 import { Emphasis } from '../components/fun/emphasis'
 import { Annotated } from '../components/fun/annotated'
-import { isValidIcon } from '../components/icon'
 
 const shortcodes = { Link, Emphasis, Annotated }
 
@@ -18,7 +17,7 @@ interface PageTemplateProps {
 }
 
 export default function PageTemplate(props: PageTemplateProps) {
-  const iconSafe = isValidIcon(props.data.mdx.frontmatter.icon) ? props.data.mdx.frontmatter.icon : 'coffee'
+  const iconSafe = props.data.mdx.frontmatter.icon ?? 'coffee'
   return (
     <Shell>
       <Post
