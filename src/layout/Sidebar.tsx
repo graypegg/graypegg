@@ -21,6 +21,36 @@ const Container = styled.div`
       }
     }
   }
+  
+  @media (max-width: 500px) {
+    display: flex;
+    flex-direction: column;
+    
+    &>a {
+      order: 1;
+      
+      img {
+        margin: 0;
+      }
+    }
+
+    nav {
+      margin: 0 -20px 25px;
+      padding: 5px 20px;
+      order: 0;
+
+      ul {
+        display: flex;
+        justify-content: space-between;
+        align-content: center;
+        
+        li {
+          margin: 0;
+          font-size: 1.1rem;
+        }
+      }
+    }
+  }
 `
 
 export function Sidebar (props: React.PropsWithChildren<{}>) {

@@ -19,6 +19,11 @@ const Content = styled.div`
   main {
     grid-area: content;
   }
+  
+  @media (max-width: 500px) {
+    padding-top: 12px;
+    padding-bottom: 5px;
+  }
 `
 
 export function Shell (props: React.PropsWithChildren<{}>) {

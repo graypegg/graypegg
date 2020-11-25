@@ -45,10 +45,13 @@ body {
   }
 
   .grid--base {
-    grid-template-rows: repeat(3, auto);
-    grid-template-areas:
-      'sidebar'
-      'content'
-      'footer';
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .grid--base main {
+    margin-top: 20px;
+    flex: 1 1 auto;
   }
 }

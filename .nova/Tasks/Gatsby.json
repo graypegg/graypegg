@@ -1,5 +1,13 @@
 {
   "actions" : {
+    "build" : {
+      "enabled" : true,
+      "script" : "gatsby build"
+    },
+    "clean" : {
+      "enabled" : true,
+      "script" : "gatsby clean"
+    },
     "run" : {
       "enabled" : true,
       "script" : "gatsby develop"
