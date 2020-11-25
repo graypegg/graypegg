@@ -13,6 +13,7 @@ import { Shell } from '../layout/Shell'
 import { SEO } from '../components/seo'
 import { Bucket } from '../components/bucket'
 import { Post } from '../components/post'
+import { Emphasis } from '../components/fun/emphasis'
 
 import { LandingPageQuery } from '../../graphql-types'
 
@@ -29,6 +30,13 @@ const LogoContainer = styled.div`
     font-weight: 500;
     color: var(--colour-blue-munsell);
     margin-top: 20px;
+    
+    em {
+      font-size: 0.8rem;
+      transform: translateY(-12px);
+      color: var(--colour-primary);
+      margin-left: 10px;
+    }
   }
 `
 
@@ -62,7 +70,7 @@ export default function IndexPage({ data }: IndexPageProps) {
       <SEO title="Gray Pegg" />
       <LogoContainer>
         <h1>Gray Pegg</h1>
-        <h2>web developer & consultant</h2>
+        <h2>web developer & consultant<Emphasis>hire me!</Emphasis></h2>
       </LogoContainer>
       
       <BucketsContainer className="grid">
