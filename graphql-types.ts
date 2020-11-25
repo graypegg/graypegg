@@ -708,6 +708,7 @@ export type FileFieldsEnum =
   | 'childMdx___frontmatter___title'
   | 'childMdx___frontmatter___date'
   | 'childMdx___frontmatter___draft'
+  | 'childMdx___frontmatter___icon'
   | 'childMdx___frontmatter___path'
   | 'childMdx___slug'
   | 'childMdx___body'
@@ -1486,6 +1487,7 @@ export type MdxFieldsEnum =
   | 'frontmatter___title'
   | 'frontmatter___date'
   | 'frontmatter___draft'
+  | 'frontmatter___icon'
   | 'frontmatter___path'
   | 'slug'
   | 'body'
@@ -1610,6 +1612,7 @@ export type MdxFrontmatter = {
   title: Scalars['String'];
   date?: Maybe<Scalars['Date']>;
   draft?: Maybe<Scalars['Boolean']>;
+  icon?: Maybe<Scalars['String']>;
   path?: Maybe<Scalars['String']>;
 };
 
@@ -1625,6 +1628,7 @@ export type MdxFrontmatterFilterInput = {
   title?: Maybe<StringQueryOperatorInput>;
   date?: Maybe<DateQueryOperatorInput>;
   draft?: Maybe<BooleanQueryOperatorInput>;
+  icon?: Maybe<StringQueryOperatorInput>;
   path?: Maybe<StringQueryOperatorInput>;
 };
 
@@ -1872,6 +1876,7 @@ export type QuerySitePageArgs = {
   componentChunkName?: Maybe<StringQueryOperatorInput>;
   matchPath?: Maybe<StringQueryOperatorInput>;
   isCreatedByStatefulCreatePages?: Maybe<BooleanQueryOperatorInput>;
+  context?: Maybe<SitePageContextFilterInput>;
   pluginCreator?: Maybe<SitePluginFilterInput>;
   pluginCreatorId?: Maybe<StringQueryOperatorInput>;
   componentPath?: Maybe<StringQueryOperatorInput>;
@@ -2309,6 +2314,7 @@ export type SitePage = Node & {
   componentChunkName: Scalars['String'];
   matchPath?: Maybe<Scalars['String']>;
   isCreatedByStatefulCreatePages?: Maybe<Scalars['Boolean']>;
+  context?: Maybe<SitePageContext>;
   pluginCreator?: Maybe<SitePlugin>;
   pluginCreatorId?: Maybe<Scalars['String']>;
   componentPath?: Maybe<Scalars['String']>;
@@ -2339,6 +2345,14 @@ export type SitePageConnectionGroupArgs = {
   field: SitePageFieldsEnum;
 };
 
+export type SitePageContext = {
+  id?: Maybe<Scalars['String']>;
+};
+
+export type SitePageContextFilterInput = {
+  id?: Maybe<StringQueryOperatorInput>;
+};
+
 export type SitePageEdge = {
   next?: Maybe<SitePage>;
   node: SitePage;
@@ -2352,6 +2366,7 @@ export type SitePageFieldsEnum =
   | 'componentChunkName'
   | 'matchPath'
   | 'isCreatedByStatefulCreatePages'
+  | 'context___id'
   | 'pluginCreator___id'
   | 'pluginCreator___parent___id'
   | 'pluginCreator___parent___parent___id'
@@ -2397,6 +2412,8 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___pluginOptions___pathToConfigModule'
   | 'pluginCreator___pluginOptions___name'
   | 'pluginCreator___pluginOptions___path'
+  | 'pluginCreator___pluginOptions___gatsbyRemarkPlugins'
+  | 'pluginCreator___pluginOptions___gatsbyRemarkPlugins___resolve'
   | 'pluginCreator___pluginOptions___extensions'
   | 'pluginCreator___pluginOptions___lessBabel'
   | 'pluginCreator___pluginOptions___mediaTypes'
@@ -2535,6 +2552,7 @@ export type SitePageFilterInput = {
   componentChunkName?: Maybe<StringQueryOperatorInput>;
   matchPath?: Maybe<StringQueryOperatorInput>;
   isCreatedByStatefulCreatePages?: Maybe<BooleanQueryOperatorInput>;
+  context?: Maybe<SitePageContextFilterInput>;
   pluginCreator?: Maybe<SitePluginFilterInput>;
   pluginCreatorId?: Maybe<StringQueryOperatorInput>;
   componentPath?: Maybe<StringQueryOperatorInput>;
@@ -2695,6 +2713,9 @@ export type SitePluginFieldsEnum =
   | 'pluginOptions___pathToConfigModule'
   | 'pluginOptions___name'
   | 'pluginOptions___path'
+  | 'pluginOptions___gatsbyRemarkPlugins'
+  | 'pluginOptions___gatsbyRemarkPlugins___resolve'
+  | 'pluginOptions___gatsbyRemarkPlugins___options___maxWidth'
   | 'pluginOptions___extensions'
   | 'pluginOptions___lessBabel'
   | 'pluginOptions___mediaTypes'
@@ -2834,6 +2855,7 @@ export type SitePluginPluginOptions = {
   pathToConfigModule?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
   path?: Maybe<Scalars['String']>;
+  gatsbyRemarkPlugins?: Maybe<Array<Maybe<SitePluginPluginOptionsGatsbyRemarkPlugins>>>;
   extensions?: Maybe<Array<Maybe<Scalars['String']>>>;
   lessBabel?: Maybe<Scalars['Boolean']>;
   mediaTypes?: Maybe<Array<Maybe<Scalars['String']>>>;
@@ -2864,6 +2886,7 @@ export type SitePluginPluginOptionsFilterInput = {
   pathToConfigModule?: Maybe<StringQueryOperatorInput>;
   name?: Maybe<StringQueryOperatorInput>;
   path?: Maybe<StringQueryOperatorInput>;
+  gatsbyRemarkPlugins?: Maybe<SitePluginPluginOptionsGatsbyRemarkPluginsFilterListInput>;
   extensions?: Maybe<StringQueryOperatorInput>;
   lessBabel?: Maybe<BooleanQueryOperatorInput>;
   mediaTypes?: Maybe<StringQueryOperatorInput>;
@@ -2887,6 +2910,28 @@ export type SitePluginPluginOptionsFilterInput = {
   allExtensions?: Maybe<BooleanQueryOperatorInput>;
   isTSX?: Maybe<BooleanQueryOperatorInput>;
   jsxPragma?: Maybe<StringQueryOperatorInput>;
+};
+
+export type SitePluginPluginOptionsGatsbyRemarkPlugins = {
+  resolve?: Maybe<Scalars['String']>;
+  options?: Maybe<SitePluginPluginOptionsGatsbyRemarkPluginsOptions>;
+};
+
+export type SitePluginPluginOptionsGatsbyRemarkPluginsFilterInput = {
+  resolve?: Maybe<StringQueryOperatorInput>;
+  options?: Maybe<SitePluginPluginOptionsGatsbyRemarkPluginsOptionsFilterInput>;
+};
+
+export type SitePluginPluginOptionsGatsbyRemarkPluginsFilterListInput = {
+  elemMatch?: Maybe<SitePluginPluginOptionsGatsbyRemarkPluginsFilterInput>;
+};
+
+export type SitePluginPluginOptionsGatsbyRemarkPluginsOptions = {
+  maxWidth?: Maybe<Scalars['Int']>;
+};
+
+export type SitePluginPluginOptionsGatsbyRemarkPluginsOptionsFilterInput = {
+  maxWidth?: Maybe<IntQueryOperatorInput>;
 };
 
 export type SitePluginPluginOptionsTypekit = {
@@ -2965,6 +3010,26 @@ export type PostsPageQuery = { allMdx: { edges: Array<{ node: (
         Pick<Mdx, 'excerpt'>
         & { frontmatter?: Maybe<Pick<MdxFrontmatter, 'title' | 'path' | 'date'>> }
       ) }> } };
+
+export type PageQueryVariables = Exact<{
+  id?: Maybe<Scalars['String']>;
+}>;
+
+
+export type PageQuery = { mdx?: Maybe<(
+    Pick<Mdx, 'id' | 'body'>
+    & { frontmatter?: Maybe<Pick<MdxFrontmatter, 'title' | 'date'>> }
+  )> };
+
+export type BlogPostQueryVariables = Exact<{
+  id?: Maybe<Scalars['String']>;
+}>;
+
+
+export type BlogPostQuery = { mdx?: Maybe<(
+    Pick<Mdx, 'id' | 'body'>
+    & { frontmatter?: Maybe<Pick<MdxFrontmatter, 'title' | 'date' | 'icon'>> }
+  )> };
 
 export type GatsbyImageSharpFixedFragment = Pick<ImageSharpFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
 

@@ -1,11 +1,7 @@
 import * as React from 'react'
 import styled from 'styled-components'
 
-import OFCheckIcon from '../../assets/images/icons/icon-omnifocus.svg'
-import HiIcon from '../../assets/images/icons/icon-hi.svg'
-import CoffeeIcon from '../../assets/images/icons/icon-coffee.svg'
-import BikeIcon from '../../assets/images/icons/icon-bike.svg'
-import TrainIcon from '../../assets/images/icons/icon-train.svg'
+import { Icon, IconRef } from '../icon'
 
 const Container = styled.strong`
   display: inline-block;
@@ -20,21 +16,13 @@ const Container = styled.strong`
   }
 `
 
-const icons = {
-  omnifocus: OFCheckIcon,
-  hi: HiIcon,
-  coffee: CoffeeIcon,
-  bike: BikeIcon,
-  train: TrainIcon
-}
-
 interface AnnotatedProps {
-  icon: keyof typeof icons;
+  icon: IconRef;
 }
 
 export function Annotated (props: React.PropsWithChildren<AnnotatedProps>) {
   return <Container>
-    <img role="presentation" alt={props.icon} src={icons[props.icon]} />
+    <Icon icon={props.icon} />
     {props.children}
   </Container>;
 }
