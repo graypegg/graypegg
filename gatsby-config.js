@@ -68,7 +68,7 @@ module.exports = {
         ],
       }
     },
-    `gatsby-plugin-graphql-codegen`,
+    // `gatsby-plugin-graphql-codegen`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {

@@ -41,8 +41,8 @@ const Container = styled(Link)`
     right: 10px;
     mix-blend-mode: multiply;
     z-index: -1;
-    filter: grayscale(1) brightness(1.2);
     margin-bottom: 0;
+    opacity: 0.4;
     
     @media (max-width: 500px) {
       transform: translateY(50%);
@@ -80,7 +80,7 @@ export function Bucket (props: BucketProps) {
     <Container to={props.to}>
       <h3>{ props.title }:</h3>
       <p>{ props.description }</p>
-      <Icon icon={props.icon} />
+      <Icon icon={props.icon} normalize={true} />
     </Container>
   )
 }
