@@ -24,6 +24,7 @@ const Container = styled(Link)`
 
   &:hover {
     transform: scale(0.96);
+    color: #fff;
   }
 
   &:active {
