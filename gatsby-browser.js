@@ -3,3 +3,5 @@
  *
  * See: https://www.gatsbyjs.com/docs/browser-apis/
  */
+
+require("prismjs/themes/prism-okaidia.css")

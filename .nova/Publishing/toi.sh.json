@@ -1,8 +1,8 @@
 {
   "identifier" : "CA6C87C4-D3AB-4342-9966-08E4055E6227",
   "localPath" : "public",
-  "remotePath" : "\/var\/gray",
+  "remotePath" : "\/var\/www\/html",
   "remoteURL" : "graypegg.com",
-  "server" : "toi.sh",
+  "server" : "graypegg.com",
   "usesPublishing" : true
 }

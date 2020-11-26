@@ -1,0 +1,20 @@
+---
+title: "Using Web Components with frameworks"
+date: "2020-11-25"
+draft: true
+icon: "escape"
+path: "/posts/web-components-for-framework-boundaries"
+---
+
+Have you used Web Components before? There's a good chance you haven't. The usual suspects (React, Vue, Angular, etc.) allow us to work with a flavour of the UI component pattern without actually using the native Web Component standard, since up until now, there really hasn't been the browser support to justify it.
+
+```typescript
+const foo = bar
+interface cat {
+  meow: () => string
+}
+function isCat(maybeCat: Object) maybeCat is cat {
+  return 'meow' in maybeCat;
+}
+console.log(foo);
+```
