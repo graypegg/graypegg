@@ -47,3 +47,26 @@ a:hover {
   width: 0.75em;
   margin-right: 0.1em;
 }
+
+@media(min-width: 500px) {
+  h1 .anchor,
+  h2 .anchor,
+  h3 .anchor,
+  h4 .anchor,
+  h5 .anchor,
+  h6 .anchor {
+    position: absolute;
+    transform: translateX(-22px);
+  }
+}
+
+@media(max-width: 500px) {
+  h1 .anchor,
+  h2 .anchor,
+  h3 .anchor,
+  h4 .anchor,
+  h5 .anchor,
+  h6 .anchor {
+    margin-right: 5px;
+  }
+}
