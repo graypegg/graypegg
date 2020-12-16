@@ -84,7 +84,7 @@ export default function IndexPage({ data }: IndexPageProps) {
         }
         <Bucket
           title="Twitter"
-          description="I've been known to use it."
+          description="I'll use it sometimes!"
           icon='twitter'
           to="http://twitter.com/graypegg" />
         <Bucket

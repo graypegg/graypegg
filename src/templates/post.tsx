@@ -21,7 +21,7 @@ export default function PageTemplate(props: PageTemplateProps) {
   const iconSafe = props.data.mdx.frontmatter.icon ?? 'coffee'
   return (
     <Shell>
-      <SEO title={props.data.mdx.frontmatter.title} />
+      <SEO title={props.data.mdx.frontmatter.title} description={props.data.mdx.excerpt} />
       <Post
         title={props.data.mdx.frontmatter.title}
         date={props.data.mdx.frontmatter.date}
@@ -41,6 +41,7 @@ export const query = graphql`
     mdx(id: { eq: $id }) {
       id
       body
+      excerpt
       frontmatter {
         title
         date
