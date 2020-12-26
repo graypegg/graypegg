@@ -17,9 +17,28 @@ const UlContainer = styled.ul`
   margin: 0;
   
   li {
+    position: relative;
+
     a {
       color: inherit;
       text-decoration: none;
+    }
+  }
+
+  > * + * {
+    --spacing: 40px;
+    margin-top: var(--spacing);
+    
+    ::before {
+      content: '';
+      display: block;
+      position: absolute;
+      top: calc(var(--spacing) / 2 * -1);
+      left: 50%;
+      transform: translate(-50%, -50%);
+      height: 1px;
+      width: 20px;
+      background-color: var(--colour-primary);
     }
   }
 `
