@@ -7,6 +7,7 @@ import imgBackground from '../assets/images/background.svg'
 
 import { Sidebar } from './Sidebar'
 import { Footer } from './Footer'
+import { MDXProviderWithShortcodes } from '../mdx'
 
 const Container = styled.div`
   background: url(${imgBackground}) no-repeat right -25vw top 10vh / 100vw;
@@ -28,14 +29,16 @@ const Content = styled.div`
 
 export function Shell (props: React.PropsWithChildren<{}>) {
   return (
-    <Container>
-      <Content className="grid grid--base">
-        <Sidebar />
-        <main>
-          {props.children}
-        </main>
-        <Footer />
-      </Content>
-    </Container>
+    <MDXProviderWithShortcodes>
+      <Container>
+        <Content className="grid grid--base">
+          <Sidebar />
+          <main>
+            {props.children}
+          </main>
+          <Footer />
+        </Content>
+      </Container>
+    </MDXProviderWithShortcodes>
   )
 }
