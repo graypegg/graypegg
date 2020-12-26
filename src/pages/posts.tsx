@@ -81,7 +81,7 @@ export const query = graphql`
             path
             date
           }
-          excerpt
+          excerpt(pruneLength: 280)
         }
       }
     }

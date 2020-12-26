@@ -1,5 +1,6 @@
 import * as React from 'react'
 import styled from 'styled-components'
+import { Jumping } from './jumping'
 
 const Container = styled.em`
   font-style: normal;
@@ -10,7 +11,7 @@ const Container = styled.em`
   background-size: 200% 100%;
   background-clip: text;
   -webkit-background-clip: text; // Safari support.
-  
+
   @keyframes rainbow {
     0%{background-position:0% 50%}
     100%{background-position:200% 50%}
@@ -20,5 +21,5 @@ const Container = styled.em`
 export function Rainbow (props: React.PropsWithChildren<{}>) {
   return <Container>
     {props.children}
-  </Container>;
+  </Container>
 }

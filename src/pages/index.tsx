@@ -8,6 +8,7 @@ import { SEO } from '../components/seo'
 import { Bucket } from '../components/bucket'
 import { Post } from '../components/post'
 import { Emphasis } from '../components/fun/emphasis'
+import { CallOut } from '../components/fun/call-out'
 
 import { LandingPageQuery } from '../../graphql-types'
 
@@ -25,7 +26,8 @@ const LogoContainer = styled.div`
     color: var(--colour-blue-munsell);
     margin-top: 20px;
     
-    em {
+    >span {
+      display: inline-block;
       font-size: 0.8rem;
       transform: translateY(-12px);
       color: var(--colour-primary);
@@ -68,7 +70,7 @@ export default function IndexPage({ data }: IndexPageProps) {
       <SEO title="Home" />
       <LogoContainer>
         <h1>Gray Pegg</h1>
-        <h2>web developer & consultant<Emphasis>hire me!</Emphasis></h2>
+        <h2>web developer & consultant<CallOut triggerOnce={true}><Emphasis>hire me!</Emphasis></CallOut></h2>
       </LogoContainer>
       
       <BucketsContainer className="grid">
@@ -94,7 +96,7 @@ export default function IndexPage({ data }: IndexPageProps) {
           to="/me" />
         <Bucket
           title="Big Projects"
-          description="This site. Moving."
+          description="Keep me accountable!"
           icon='rails'
           to="/projects" />
         <Bucket

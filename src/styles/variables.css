@@ -25,6 +25,9 @@ body {
   --font-heading: 'henderson-slab-basic', serif;
   --font-body: 'mokoko', serif;
   
+  --ease-in-expo: cubic-bezier(0.7, 0, 0.84, 0);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  
   color: var(--colour-primary);
 }
 

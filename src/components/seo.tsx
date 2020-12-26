@@ -40,7 +40,7 @@ export function SEO({ description = '', lang = 'en', meta = [], title }: SEOProp
         lang,
       }}
       title={title}
-      titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : null}
+      titleTemplate={defaultTitle ? `%s` : null}
       meta={[
         {
           name: `description`,

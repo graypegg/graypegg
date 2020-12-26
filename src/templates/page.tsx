@@ -5,11 +5,16 @@ import { graphql } from "gatsby"
 import { Shell } from '../layout/Shell'
 import { SEO } from '../components/seo'
 import { Post } from '../components/post'
+import { PageQuery } from "../../graphql-types"
 
-export default function PageTemplate(props) {
+interface PageProps {
+  data: PageQuery
+}
+
+export default function PageTemplate(props: PageProps) {
   return (
     <Shell>
-      <SEO title={props.data.mdx.title} />
+      <SEO title={props.data.mdx.frontmatter.title} description={props.data.mdx.excerpt} />
       <MDXRenderer>{props.data.mdx.body}</MDXRenderer>
     </Shell>
   )
@@ -20,6 +25,7 @@ export const query = graphql`
     mdx(id: { eq: $id }) {
       id
       body
+      excerpt(pruneLength: 240)
       frontmatter {
         title
         date
