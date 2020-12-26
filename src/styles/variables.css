@@ -16,9 +16,11 @@ body {
   --gradient-left: linear-gradient(270deg, var(--colour-teal-blue), var(--colour-blue-munsell), var(--colour-green-yellow-crayola), var(--colour-sandy-brown), var(--colour-firebrick));
   --gradient-top-right: linear-gradient(45deg, var(--colour-teal-blue), var(--colour-blue-munsell), var(--colour-green-yellow-crayola), var(--colour-sandy-brown), var(--colour-firebrick));
   --gradient-bottom-right: linear-gradient(135deg, var(--colour-teal-blue), var(--colour-blue-munsell), var(--colour-green-yellow-crayola), var(--colour-sandy-brown), var(--colour-firebrick));
-  --gradient-top-left: linear-gradient(225deg, var(--colour-teal-blue), var(--colour-blue-munsell), var(--colour-green-yellow-crayola), var(--colour-sandy-brown), var(--colour-firebrick));
+  --gradient-top-left: linear-gradient(225deg, var(--colour-teal-blue), var(--colour-blue-munsell), var(--colour-sandy-brown), var(--colour-firebrick));
   --gradient-bottom-left: linear-gradient(315deg, var(--colour-teal-blue), var(--colour-blue-munsell), var(--colour-green-yellow-crayola), var(--colour-sandy-brown), var(--colour-firebrick));
   --gradient-radial: radial-gradient(var(--colour-teal-blue), var(--colour-blue-munsell), var(--colour-green-yellow-crayola), var(--colour-sandy-brown), var(--colour-firebrick));
+
+--gradient-top-left-reversing: linear-gradient(225deg, var(--colour-teal-blue), var(--colour-blue-munsell), var(--colour-sandy-brown), var(--colour-firebrick), var(--colour-sandy-brown), var(--colour-blue-munsell), var(--colour-teal-blue));
 
   --font-heading: 'henderson-slab-basic', serif;
   --font-body: 'mokoko', serif;
