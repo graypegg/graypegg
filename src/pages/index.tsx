@@ -120,7 +120,7 @@ export default function IndexPage({ data }: IndexPageProps) {
             title="Email Me"
             description="me@graypegg.com"
             icon='info'
-            to="/me"
+            to="mailto:me@graypegg.com?subject=hi!"
             itemProp="email" />
         </BucketsContainer>
       </div>

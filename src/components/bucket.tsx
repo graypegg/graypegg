@@ -1,4 +1,5 @@
 import { Link } from 'gatsby'
+import { OutboundLink } from 'gatsby-plugin-google-gtag'
 import * as React from 'react'
 import styled from 'styled-components'
 import { Icon } from './icon'
@@ -11,13 +12,12 @@ interface BucketProps {
   itemProp?: string
 }
 
-const Container = styled(Link)`
+const Container = styled('div')`
   --line-height: 1.15rem;
 
   display: block;
   text-decoration: none;
   color: #FFFFFF;
-  padding: 8px 7px;
   line-height: var(--line-height);
   mix-blend-mode: multiply;
   cursor: pointer;
@@ -25,6 +25,15 @@ const Container = styled(Link)`
   user-select: none;
   position: relative;
   overflow: hidden;
+  
+  a {
+    display: block;
+    height: 100%;
+    width: 100%;
+    padding: 8px 7px;
+    color: currentColor;
+    text-decoration: none;
+  }
 
   &:hover {
     transform: scale(0.96);
@@ -35,7 +44,7 @@ const Container = styled(Link)`
     transform: scale(0.94);
   }
 
-  &>svg {
+  svg {
     width: 60px;
     height: 60px;
     position: absolute;
@@ -61,7 +70,7 @@ const Container = styled(Link)`
   }
   
   p {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     font-weight: 200;
     margin-bottom: 0;
     overflow: hidden;
@@ -79,15 +88,33 @@ const Container = styled(Link)`
 `
 
 export function Bucket (props: BucketProps) {
-  return (
-    <Container to={props.to}>
-      <h3>{ props.title }:</h3>
+  if (props.to[0] !== '/') {
+    return (
+      <Container>
+        <OutboundLink target="_blank" href={props.to}>
+          <h3>{ props.title }:</h3>
+    
+          { props.itemProp
+            ? <p itemProp={props.itemProp}>{ props.description }</p>
+            : <p>{ props.description }</p>
+          }
+          <Icon icon={props.icon} />
+        </OutboundLink>
+      </Container>
+    )
+  }
 
-      { props.itemProp
-        ? <p itemProp={props.itemProp}>{ props.description }</p>
-        : <p>{ props.description }</p>
-      }
-      <Icon icon={props.icon} />
+  return (
+    <Container>
+      <Link to={props.to}>
+        <h3>{ props.title }:</h3>
+  
+        { props.itemProp
+          ? <p itemProp={props.itemProp}>{ props.description }</p>
+          : <p>{ props.description }</p>
+        }
+        <Icon icon={props.icon} />
+      </Link>
     </Container>
   )
 }
