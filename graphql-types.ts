@@ -3018,6 +3018,14 @@ export type Unnamed_1_QueryVariables = Exact<{ [key: string]: never; }>;
 
 export type Unnamed_1_Query = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'title' | 'description' | 'author'>> }> };
 
+export type FourOhFourPageQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type FourOhFourPageQuery = { site?: Maybe<(
+    Pick<Site, 'buildTime' | 'host' | 'port'>
+    & { exactBuildTime: Site['buildTime'] }
+  )> };
+
 export type LandingPageQueryVariables = Exact<{ [key: string]: never; }>;
 
 

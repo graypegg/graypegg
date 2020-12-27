@@ -46,8 +46,8 @@ export function Jumping (props: JumpingProps) {
   const chars = props.children.split('')
 
   return <Container>
-    {chars.map(char => (
-      <span className={char === ' ' ? 'space' : ''}>{char}</span>
+    {chars.map((char, index) => (
+      <span key={`${char}${index}`} className={char === ' ' ? 'space' : ''}>{char}</span>
     ))}
   </Container>
 }

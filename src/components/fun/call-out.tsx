@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { useInView } from 'react-intersection-observer'
 
 const Container = styled.em`
+  --delay: 1000ms;
   --duration: 1750ms;
 
   font-style: normal;
@@ -15,7 +16,7 @@ const Container = styled.em`
     display: block;
     height: 1.5ch;
     width: 0;
-    background-color: var( --colour-green-yellow-crayola);
+    background-color: var(--colour-green-yellow-crayola);
     position: absolute;
     top: 50%;
     left: -0.5em;
@@ -27,10 +28,10 @@ const Container = styled.em`
   }
   
   &.showing {
-    animation: calc(var(--duration) - 750ms) ease-out 1 normal forwards callout;
+    animation: calc(var(--duration) - 750ms) var(--delay) ease-out 1 normal forwards callout;
     
     :after {
-      animation: 750ms calc(var(--duration) - 750ms) var(--ease-out-expo) 1 normal forwards highlight;
+      animation: 750ms calc(var(--delay) + var(--duration) - 750ms) var(--ease-out-expo) 1 normal forwards highlight;
     }
   }
   
@@ -41,11 +42,11 @@ const Container = styled.em`
     25% {
       transform: scale(1.2);
     }
-    30% { transform: scale(1.2) rotate(${(Math.random() * 10) + 2}deg); }
-    35% { transform: scale(1.2) rotate(${(Math.random() * -10) - 2}deg); }
-    40% { transform: scale(1.2) rotate(${(Math.random() * 10) + 2}deg); }
-    45% { transform: scale(1.2) rotate(${(Math.random() * -10) - 2}deg); }
-    50% { transform: scale(1.2) rotate(${(Math.random() * 10) + 2}deg); }
+    30% { transform: scale(1.2) rotate(5deg); }
+    37% { transform: scale(1.2) rotate(-5deg); }
+    44% { transform: scale(1.2) rotate(5deg); }
+    51% { transform: scale(1.2) rotate(-5deg); }
+    58% { transform: scale(1.2) rotate(0); }
     100% {
       transform: scale(1);
     }
@@ -64,7 +65,6 @@ const Container = styled.em`
 export function CallOut (props: PropsWithChildren<{triggerOnce?: boolean}>) {
   const { ref, inView } = useInView({
     threshold: 1,
-    rootMargin: '-90px',
     triggerOnce: props.triggerOnce ?? false
   });
   return <span>
