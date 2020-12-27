@@ -70,7 +70,7 @@ export default function IndexPage({ data }: IndexPageProps) {
       <SEO title="Home" />
       <LogoContainer>
         <h1>Gray Pegg</h1>
-        <h2>web developer & consultant<CallOut triggerOnce={true}><Emphasis>hire me!</Emphasis></CallOut></h2>
+        <h2>web developer & consultant<CallOut triggerOnce={true}><Emphasis>open for consulting!</Emphasis></CallOut></h2>
       </LogoContainer>
       
       <BucketsContainer className="grid">
