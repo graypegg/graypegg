@@ -75,13 +75,32 @@ const Container = styled.article`
 
 interface PostProps extends Required<Pick<MdxFrontmatter, 'title' | 'date'>> {
   body: React.ReactNode
-  icon?: string
+  icon?: string,
+  fullPost?: boolean
 }
 
 export function Post (props: PostProps) {
   const dateTime = React.useMemo(() => {
     return new Date(props.date).toISOString()
   }, [props.date])
+  if (props.fullPost) {
+    return <Container itemScope itemType="https://schema.org/BlogPosting">
+      { props.icon
+        ? <Icon itemProp="image" icon={props.icon} /> : null }
+      <header>
+        <h2 itemProp="headline">{props.title}</h2>
+        <h3><time dateTime={dateTime} itemProp="datePublished">{props.date}</time></h3>
+      </header>
+      <div itemProp="articleBody">
+        { props.body }
+      </div>
+      
+      <small itemProp="author" itemScope itemType="https://schema.org/Person">
+        <span itemProp="name">Gray Pegg</span> - <a itemProp="sameAs" href="https://graypegg.com">graypegg.com</a>
+      </small>
+    </Container>
+  }
+
   return (
     <Container>
       { props.icon ? <Icon icon={props.icon} /> : null }
@@ -89,7 +108,9 @@ export function Post (props: PostProps) {
         <h2>{props.title}</h2>
         <h3><time dateTime={dateTime}>{props.date}</time></h3>
       </header>
-      { props.body }
+      <div>
+        { props.body }
+      </div>
     </Container>
   )
 }

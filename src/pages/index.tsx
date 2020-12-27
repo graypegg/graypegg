@@ -26,6 +26,10 @@ const LogoContainer = styled.div`
     color: var(--colour-blue-munsell);
     margin-top: 20px;
     
+    >div {
+      display: inline;
+    }
+    
     >span {
       display: inline-block;
       font-size: 0.8rem;
@@ -68,43 +72,58 @@ export default function IndexPage({ data }: IndexPageProps) {
   return (
     <Shell>
       <SEO title="Home" />
-      <LogoContainer>
-        <h1>Gray Pegg</h1>
-        <h2>web developer & consultant<CallOut triggerOnce={true}><Emphasis>open for consulting!</Emphasis></CallOut></h2>
-      </LogoContainer>
-      
-      <BucketsContainer className="grid">
-        { latestPost && latestPost.node.frontmatter
-          ? <Bucket
-              title="Latest"
-              description={
-                latestPost.node.frontmatter.title
-              }
-              icon={latestPost.node.frontmatter.icon}
-              to={latestPost.node.frontmatter.path} />
-            : null
-        }
-        <Bucket
-          title="Twitter"
-          description="I'll use it sometimes!"
-          icon='twitter'
-          to="http://twitter.com/graypegg" />
-        <Bucket
-          title="Myself"
-          description="Web developer based in Toronto available for side TS/JS consulting work."
-          icon='hi'
-          to="/me" />
-        <Bucket
-          title="Big Projects"
-          description="Keep me accountable!"
-          icon='rails'
-          to="/projects" />
-        <Bucket
-          title="Email Me"
-          description="Ask me anything!"
-          icon='info'
-          to="/me" />
-      </BucketsContainer>
+      <div itemProp="founder" itemScope itemType="https://schema.org/Person">
+        <LogoContainer>
+          <h1 itemProp="name">
+            <span itemProp="givenName">Gray</span> <span itemProp="familyName">Pegg</span>
+          </h1>
+          <h2>
+            web developer & consultant
+            <CallOut triggerOnce={true}>
+              <Emphasis>
+                <span itemProp="homeLocation" itemScope itemType="https://schema.org/AdministrativeArea">
+                  in <span itemProp="name">Toronto</span>!
+                </span>
+              </Emphasis>
+            </CallOut>
+          </h2>
+        </LogoContainer>
+        
+        <BucketsContainer className="grid">
+          { latestPost && latestPost.node.frontmatter
+            ? <Bucket
+                title="Latest"
+                description={
+                  latestPost.node.frontmatter.title
+                }
+                icon={latestPost.node.frontmatter.icon}
+                to={latestPost.node.frontmatter.path} />
+              : null
+          }
+          <Bucket
+            title="Twitter"
+            description="I'll use it sometimes!"
+            icon='twitter'
+            to="http://twitter.com/graypegg" />
+          <Bucket
+            title="Myself"
+            description="Web developer based in Toronto available for side TS/JS consulting work."
+            icon='hi'
+            to="/me"
+            itemProp="description" />
+          <Bucket
+            title="Big Projects"
+            description="Keep me accountable!"
+            icon='rails'
+            to="/projects" />
+          <Bucket
+            title="Email Me"
+            description="me@graypegg.com"
+            icon='info'
+            to="/me"
+            itemProp="email" />
+        </BucketsContainer>
+      </div>
       
       <Post title='now!' date={nowPost?.frontmatter?.date} body={
         <MDXRenderer>{nowPost?.body}</MDXRenderer>

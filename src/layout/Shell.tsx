@@ -31,7 +31,10 @@ export function Shell (props: React.PropsWithChildren<{}>) {
   return (
     <MDXProviderWithShortcodes>
       <Container>
-        <Content className="grid grid--base">
+        <Content
+          className="grid grid--base"
+          itemScope
+          itemType="https://schema.org/Organization">
           <Sidebar />
           <main>
             {props.children}

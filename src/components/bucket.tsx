@@ -8,6 +8,7 @@ interface BucketProps {
   description: string
   to: string
   icon?: string
+  itemProp?: string
 }
 
 const Container = styled(Link)`
@@ -81,7 +82,11 @@ export function Bucket (props: BucketProps) {
   return (
     <Container to={props.to}>
       <h3>{ props.title }:</h3>
-      <p>{ props.description }</p>
+
+      { props.itemProp
+        ? <p itemProp={props.itemProp}>{ props.description }</p>
+        : <p>{ props.description }</p>
+      }
       <Icon icon={props.icon} />
     </Container>
   )

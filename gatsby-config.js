@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `Gray Pegg`,
+    title: `Gray Pegg Development`,
     description: `I’m a Typescript developer based out of Toronto, and soon to be Montréal. I work for Landr as a developer; Typescript and Javascript consulting is my side-hustle, and doodling in Illustrator is a hobby.`,
     author: `@graypegg`,
     siteUrl: `https://graypegg.com`,
@@ -93,7 +93,7 @@ module.exports = {
         ],
       }
     },
-    // `gatsby-plugin-graphql-codegen`,
+    `gatsby-plugin-graphql-codegen`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {

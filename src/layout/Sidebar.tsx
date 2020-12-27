@@ -1,9 +1,10 @@
 import * as React from 'react'
 import styled from 'styled-components'
-import { Link } from 'gatsby'
+import { graphql, Link, StaticQuery } from 'gatsby'
 import { OutboundLink } from 'gatsby-plugin-google-gtag'
 
 import imgLogo from '../assets/images/logo.svg'
+import { SidebarQuery } from '../../graphql-types'
 
 const Container = styled.div`
   color: var(--color-primary);
@@ -56,18 +57,62 @@ const Container = styled.div`
 
 export function Sidebar (props: React.PropsWithChildren<{}>) {
   return (
-    <Container>
-      <Link to="/">
-        <img width="78" height="60" src={imgLogo} />
-      </Link>
-      <nav>
-        <ul>
-          <li><Link to="/posts">/posts</Link></li>
-          <li><Link to="/me">/me</Link></li>
-          <li><Link to="/projects">/projects</Link></li>
-          <li><OutboundLink href="https://github.com/graypegg">github</OutboundLink></li>
-        </ul>
-      </nav>
-    </Container>
+    <StaticQuery
+      query={
+        graphql`
+          query Sidebar {
+            allFile(filter: {relativePath: {in: "logo.svg"}}) {
+              edges {
+                node {
+                  publicURL
+                }
+              }
+            }
+            allSitePage(filter: {path: {regex: "/\\/[a-z]+\\/?$/"}}, sort: {fields: path, order: ASC}) {
+              edges {
+                node {
+                  path
+                }
+              }
+            }
+            site {
+              siteMetadata {
+                siteUrl
+                title
+              }
+            }
+          }
+        `
+      }
+      render={(data: SidebarQuery) => {
+        const site = data?.site?.siteMetadata
+        const logo =
+          (site.siteUrl ?? '') +
+          data.allFile.edges?.[0].node?.publicURL ?? ''
+        const pages = data.allSitePage.edges
+        
+        return (
+          <Container>
+            <Link to="/">
+              <img width="78" height="60" src={imgLogo} alt="Gray Pegg Media" />
+              <meta itemProp="logo" content={logo} />
+              <meta itemProp="name" content={site.title ?? ''} />
+              <meta itemProp="url" content={site.siteUrl ?? ''} />
+            </Link>
+            <nav>
+              <ul>
+                { pages.map(page => (
+                  <li key={page.node.path}>
+                    <Link to={page.node.path}>
+                      {page.node.path.replace(/\/$/, '')}
+                    </Link>
+                  </li>
+                ))}
+                <li><OutboundLink href="https://github.com/graypegg">github</OutboundLink></li>
+              </ul>
+            </nav>
+          </Container>
+        )
+      }} />
   )
 }

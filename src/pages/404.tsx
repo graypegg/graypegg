@@ -36,7 +36,6 @@ interface FourOhFourPageProps {
 }
 
 export default function FourOhFourPage({data}: FourOhFourPageProps) {
-  const accessed = `://${data?.site?.host}:${data?.site?.port}`
   return (
     <Shell>
       <SEO title="Error: Missing page" meta={ [{name: 'robots', content: 'noindex'}] } />
@@ -46,8 +45,7 @@ export default function FourOhFourPage({data}: FourOhFourPageProps) {
         <br/>
         <small>
           Error 404<br/>
-          site built <time dateTime={data?.site?.exactBuildTime}>{ data?.site?.buildTime }</time><br/>
-          accessed from <a href={accessed}>{accessed}</a>
+          site built <time dateTime={data?.site?.exactBuildTime}>{ data?.site?.buildTime }</time>
         </small>
       </BigH2>
     </Shell>
@@ -59,8 +57,6 @@ export const query = graphql`
     site {
       buildTime(fromNow: true)
       exactBuildTime: buildTime(fromNow: false)
-      host
-      port
     }
   }
 `

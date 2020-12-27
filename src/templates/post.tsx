@@ -24,6 +24,7 @@ export default function PageTemplate(props: PageTemplateProps) {
         body={
           <MDXRenderer>{props.data.mdx.body}</MDXRenderer>
         }
+        fullPost={true}
       />
     </Shell>
   )
