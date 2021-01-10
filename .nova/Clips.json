@@ -1,0 +1,8 @@
+{
+  "clips" : [
+    {
+      "content" : "---\ntitle: \"now!\"\ndate: \"$DATE\"\n---\n${:Content}",
+      "name" : "Now"
+    }
+  ]
+}
