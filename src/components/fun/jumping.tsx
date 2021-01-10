@@ -5,6 +5,7 @@ const Container = styled.em`
   --speed: 1.5s;
 
   font-style: normal;
+  white-space: pre;
   
   & > span {
     display: inline-block;
