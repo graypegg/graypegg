@@ -1,6 +1,6 @@
+import { graphql, StaticQuery } from 'gatsby'
 import * as React from 'react'
 import styled from 'styled-components'
-import { StaticQuery, graphql } from 'gatsby'
 import { IconFilesQuery } from '../../graphql-types'
 
 interface AnnotatedProps {
