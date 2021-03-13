@@ -13,7 +13,7 @@ interface PageProps {
 
 export default function PageTemplate(props: PageProps) {
   return (
-    <Shell>
+    <Shell easyToRead={true}>
       <SEO title={props.data.mdx.frontmatter.title} description={props.data.mdx.excerpt} />
       <MDXRenderer>{props.data.mdx.body}</MDXRenderer>
     </Shell>

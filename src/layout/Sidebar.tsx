@@ -68,10 +68,12 @@ export function Sidebar (props: React.PropsWithChildren<{}>) {
                 }
               }
             }
-            allSitePage(filter: {path: {regex: "/\\/[a-z]+\\/?$/"}}, sort: {fields: path, order: ASC}) {
+            allMdx(sort: {fields: frontmatter___path, order: ASC}, filter: {frontmatter: {draft: {eq: false}, path: {regex: "/\\/[a-z]+\\/?$/"}}}) {
               edges {
                 node {
-                  path
+                  frontmatter {
+                    path
+                  }
                 }
               }
             }
@@ -89,7 +91,7 @@ export function Sidebar (props: React.PropsWithChildren<{}>) {
         const logo =
           (site.siteUrl ?? '') +
           data.allFile.edges?.[0].node?.publicURL ?? ''
-        const pages = data.allSitePage.edges
+        const pages = data.allMdx.edges
         
         return (
           <Container>
@@ -102,12 +104,17 @@ export function Sidebar (props: React.PropsWithChildren<{}>) {
             <nav>
               <ul>
                 { pages.map(page => (
-                  <li key={page.node.path}>
-                    <Link to={page.node.path}>
-                      {page.node.path.replace(/\/$/, '')}
+                  <li key={page.node?.frontmatter?.path}>
+                    <Link to={page.node?.frontmatter?.path}>
+                      {page.node?.frontmatter?.path?.replace(/\/$/, '')}
                     </Link>
                   </li>
                 ))}
+                <li>
+                  <Link to='/posts'>
+                    /posts
+                  </Link>
+                </li>
                 <li><OutboundLink href="https://github.com/graypegg">github</OutboundLink></li>
               </ul>
             </nav>

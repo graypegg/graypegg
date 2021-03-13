@@ -3,6 +3,10 @@
     {
       "content" : "---\ntitle: \"now!\"\ndate: \"$DATE\"\n---\n${:Content}",
       "name" : "Now"
+    },
+    {
+      "content" : "$DATE",
+      "name" : "Date for MDX"
     }
   ]
 }

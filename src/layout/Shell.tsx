@@ -9,8 +9,17 @@ import { Sidebar } from './Sidebar'
 import { Footer } from './Footer'
 import { MDXProviderWithShortcodes } from '../mdx'
 
+interface ShellProps {
+  easyToRead?: boolean
+}
+
 const Container = styled.div`
-  background: url(${imgBackground}) no-repeat right -25vw top 10vh / 100vw;
+  ${
+    (props: ShellProps) =>
+      props.easyToRead
+      ? ''
+      : `background: url(${imgBackground}) no-repeat right -25vw top 10vh / 100vw;`
+  }
 `
 
 const Content = styled.div`
@@ -27,10 +36,10 @@ const Content = styled.div`
   }
 `
 
-export function Shell (props: React.PropsWithChildren<{}>) {
+export function Shell (props: React.PropsWithChildren<ShellProps>) {
   return (
     <MDXProviderWithShortcodes>
-      <Container>
+      <Container {...props}>
         <Content
           className="grid grid--base"
           itemScope

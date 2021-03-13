@@ -3013,7 +3013,7 @@ export type Unnamed_1_Query = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSit
 export type SidebarQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type SidebarQuery = { allFile: { edges: Array<{ node: Pick<File, 'publicURL'> }> }, allSitePage: { edges: Array<{ node: Pick<SitePage, 'path'> }> }, site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'siteUrl' | 'title'>> }> };
+export type SidebarQuery = { allFile: { edges: Array<{ node: Pick<File, 'publicURL'> }> }, allMdx: { edges: Array<{ node: { frontmatter?: Maybe<Pick<MdxFrontmatter, 'path'>> } }> }, site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'siteUrl' | 'title'>> }> };
 
 export type FourOhFourPageQueryVariables = Exact<{ [key: string]: never; }>;
 
