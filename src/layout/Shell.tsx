@@ -1,6 +1,7 @@
 import * as React from 'react'
 import '../styles/variables.css'
 import '../styles/grid.css'
+import '../styles/globals.css'
 import styled from 'styled-components'
 
 import imgBackground from '../assets/images/background.svg'
