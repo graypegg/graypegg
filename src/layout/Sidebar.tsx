@@ -68,7 +68,7 @@ export function Sidebar (props: React.PropsWithChildren<{}>) {
                 }
               }
             }
-            allMdx(sort: {fields: frontmatter___path, order: ASC}, filter: {frontmatter: {draft: {eq: false}, path: {regex: "/\\/[a-z]+\\/?$/"}}}) {
+            allMdx(sort: {fields: frontmatter___path, order: ASC}, filter: {frontmatter: {draft: {eq: false}, showInNav: {eq: true}}}) {
               edges {
                 node {
                   frontmatter {
