@@ -71,7 +71,10 @@ export default function IndexPage({ data }: IndexPageProps) {
   const nowPost = data.mdx
   return (
     <Shell>
-      <SEO title="Home" />
+      <SEO
+        title="Gray Pegg is a Typescript Developer in Toronto."
+        description="I write a small blog here, Typescript and Javascript consulting is my side-hustle, and doodling in Illustrator is a hobby."
+      />
       <div itemProp="founder" itemScope itemType="https://schema.org/Person">
         <LogoContainer>
           <h1 itemProp="name">
